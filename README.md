@@ -7,6 +7,18 @@ Standalone project page for **LG Electronics Inc.** — part of the Vyara Di por
 
 ## Folder structure
 
+/images
+  /index
+    card-02.webp
+    card-03.webp
+    card-04.webp
+    card-05.webp
+    card-06.webp
+
+/videos
+  /index
+    card-01.webm
+    
 ```
 project-01.html
 images/
@@ -59,6 +71,8 @@ autoplay muted loop playsinline preload="metadata"
 Drop the new file into `videos/project-01/` using the exact filename listed above. The page references files by path, so no HTML edits are needed as long as the name matches.
 
 To change a filename, update the `src` attribute on the relevant `<video>` tag.
+
+
 
 ---
 

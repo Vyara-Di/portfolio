@@ -129,6 +129,12 @@ File	Section
 `detail-02.mp4`	Paid Media campaigns
 `detail-03.mp4`	Paid Media campaigns
 > All videos autoplay muted and loop. Recommended format: `.mp4` (H.264), keep under 10 MB per file for fast loading.
+
+ `models/` — 3D assets
+
+| File | Used on |
+|------|---------|
+| `sculpture.glb` | Homepage hero — interactive 3D sculpture |
 ---
 How to replace a file on GitHub
 Navigate to the file's path in the repository (e.g. `images/project-01/hero.jpg`).

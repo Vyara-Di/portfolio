@@ -126,11 +126,6 @@ nav.main a.cta:hover::before{transform:translateY(0)}
 	z-index:-10
 }
 
-.model-viewport{
-    width:600px;
-    height:500px;
-}
-
 @keyframes heroFloat{
   0%{
     transform:translateY(-50%) scale(1);
@@ -591,9 +586,9 @@ body.lb-open{overflow:hidden}
         <p class="lead reveal">I design things that <span class="acc">feel considered</span>. Not just branded — thoughtful, from the first pixel to the last.</p>
         <p class="reveal">I’m a designer with 8 years of experience across digital and print, shaping brand systems that hold across identity, editorial, out-of-home, motion, and digital environments. My focus is on structure and consistency—translating ideas into visual systems that scale without losing precision or character. Based in Germany.</p>
         <div class="stats reveal">
-          <div><div class="n" data-count="120" data-suffix="+">0</div><div class="l">Projects</div></div>
-          <div><div class="n" data-count="34" data-suffix="">0</div><div class="l">Brands</div></div>
-          <div><div class="n" data-count="11" data-suffix="yr">0</div><div class="l">Experience</div></div>
+          <div><div class="n" data-count="24" data-suffix="+">0</div><div class="l">Projects</div></div>
+          <div><div class="n" data-count="10" data-suffix="">0</div><div class="l">Brands</div></div>
+          <div><div class="n" data-count="8" data-suffix="yr">0</div><div class="l">Experience</div></div>
         </div>
       </div>
       <!-- RIGHT: photo -->
@@ -922,123 +917,6 @@ if(document.readyState==="complete") init(); else addEventListener("load",init);
     });
   });
 })();
-
-<script type="module">
-import * as THREE from 'https://unpkg.com/three@0.179.1/build/three.module.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.179.1/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.179.1/examples/jsm/controls/OrbitControls.js';
-
-const canvas = document.getElementById('modelCanvas');
-
-// Give canvas actual dimensions
-canvas.style.width = "100%";
-canvas.style.height = "100%";
-
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(
-    45,
-    canvas.parentElement.clientWidth /
-    canvas.parentElement.clientHeight,
-    0.1,
-    1000
-);
-
-camera.position.set(0,1,5);
-
-const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias:true,
-    alpha:true
-});
-
-renderer.setSize(
-    canvas.parentElement.clientWidth,
-    canvas.parentElement.clientHeight
-);
-
-renderer.setPixelRatio(window.devicePixelRatio);
-
-// Lights
-scene.add(new THREE.AmbientLight(0xffffff,1.5));
-
-const light = new THREE.DirectionalLight(0xffffff,2);
-light.position.set(2,3,5);
-scene.add(light);
-
-// Controls
-const controls = new OrbitControls(
-    camera,
-    renderer.domElement
-);
-
-const loader = new GLTFLoader();
-
-loader.load(
-    "./models/sculpture.glb",
-
-    (gltf)=>{
-
-        const model = gltf.scene;
-
-        // Auto-center model
-        const box = new THREE.Box3().setFromObject(model);
-
-        const center = box.getCenter(
-            new THREE.Vector3()
-        );
-
-        model.position.sub(center);
-
-        // Auto-scale
-        const size = box.getSize(
-            new THREE.Vector3()
-        );
-
-        const maxDim = Math.max(
-            size.x,
-            size.y,
-            size.z
-        );
-
-        const scale = 2/maxDim;
-        model.scale.setScalar(scale);
-
-        scene.add(model);
-
-        console.log("Model loaded");
-    },
-
-    undefined,
-
-    (error)=>{
-        console.error("Load failed:",error);
-    }
-);
-
-function animate(){
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene,camera);
-}
-
-animate();
-
-window.addEventListener('resize',()=>{
-
-    const w =
-      canvas.parentElement.clientWidth;
-
-    const h =
-      canvas.parentElement.clientHeight;
-
-    camera.aspect = w/h;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(w,h);
-
-});
-</script>
 
 </script>
 </body>
